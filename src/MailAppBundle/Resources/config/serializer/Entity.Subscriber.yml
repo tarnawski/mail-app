@@ -1,0 +1,17 @@
+MailAppBundle\Entity\Subscriber:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      groups: [SUBSCRIBER_DETAILS, SUBSCRIBER_BASIC]
+    secret:
+      expose: false
+      groups: [SUBSCRIBER_DETAILS, SUBSCRIBER_BASIC]
+    createdAt:
+      expose: true
+      groups: [SUBSCRIBER_DETAILS, SUBSCRIBER_BASIC]
+    attributes:
+      expose: true
+      groups: [SUBSCRIBER_DETAILS]
+      type: ArrayCollection<MailAppBundle\Entity\Attribute>
+      max_depth: 2

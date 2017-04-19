@@ -1,0 +1,21 @@
+MailAppBundle\Entity\Subscriber:
+  subscriber1:
+    createdAt: <dateTimeBetween('-30 days', 'now')>
+    secret: f98ada20-24fa-11e7-93ae-92361f002671
+    user: '@user1'
+  subscriber2:
+    createdAt: <dateTimeBetween('-30 days', 'now')>
+    secret: f98adc5a-24fa-11e7-93ae-92361f002671
+    user: '@user1'
+  subscriber3:
+    createdAt: <dateTimeBetween('-30 days', 'now')>
+    secret: f98add72-24fa-11e7-93ae-92361f002671
+    user: '@user1'
+  subscriber4:
+    createdAt: <dateTimeBetween('-30 days', 'now')>
+    secret: f98ade4e-24fa-11e7-93ae-92361f002671
+    user: '@user2'
+  subscriber5:
+    createdAt: <dateTimeBetween('-30 days', 'now')>
+    secret: f98adf3e-24fa-11e7-93ae-92361f002671b
+    user: '@user2'

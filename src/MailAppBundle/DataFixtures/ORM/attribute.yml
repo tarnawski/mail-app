@@ -1,0 +1,41 @@
+MailAppBundle\Entity\Attribute:
+  attribute1:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber1'
+  attribute2:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber1'
+  attribute3:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber2'
+  attribute4:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber2'
+  attribute5:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber3'
+  attribute6:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber3'
+  attribute7:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber4'
+  attribute8:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber4'
+  attribute9:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber5'
+  attribute10:
+    name: <word()>
+    value: <word()>
+    subscriber: '@subscriber5'

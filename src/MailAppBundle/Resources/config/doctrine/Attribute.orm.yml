@@ -1,0 +1,29 @@
+MailAppBundle\Entity\Attribute:
+  type: entity
+  table: attribute
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+      name:
+          column: name
+          type: string
+          nullable: true
+          length: 64
+      value:
+          column: value
+          type: string
+          nullable: true
+          length: 255
+  manyToOne:
+      subscriber:
+           targetEntity: Subscriber
+           inversedBy: attribute
+           joinColumn:
+              name: subscriber_id
+              referencedColumnName: id
+              nullable: false
+
+  lifecycleCallbacks: {  }

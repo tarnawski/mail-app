@@ -1,0 +1,6 @@
+MailAppBundle\Entity\Subscriber:
+  properties:
+      atributes:
+          - Valid: ~
+          - All:
+              - NotNull: ~

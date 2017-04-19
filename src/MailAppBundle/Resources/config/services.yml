@@ -1,0 +1,8 @@
+services:
+  mail_app.user_factory:
+    class: MailAppBundle\Model\UserFactory
+
+  mail_app.token_factory:
+    class: MailAppBundle\Model\AccessTokenFactory
+    arguments: ["@doctrine.orm.entity_manager", "@fos_oauth_server.server"]
+

@@ -1,8 +1,13 @@
 parameters:
-    secret_key: SecretToken
+    secret_key:        SecretToken
     database_driver:   pdo_mysql
     database_host:     127.0.0.1
     database_port:     ~
     database_name:     mail-app
     database_user:     root
     database_password: rootpassword
+    mailer_transport:  smtp
+    mailer_host:       poczta.o2.pl
+    mailer_port:       465
+    mailer_user:       ~
+    mailer_password:   ~

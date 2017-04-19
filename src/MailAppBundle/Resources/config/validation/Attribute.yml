@@ -1,0 +1,10 @@
+MailAppBundle\Entity\Attribute:
+  properties:
+      name:
+          - NotBlank: ~
+          - Length:
+              max:   64
+      value:
+          - NotBlank: ~
+          - Length:
+              max:   255
