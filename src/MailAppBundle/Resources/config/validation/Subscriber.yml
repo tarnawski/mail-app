@@ -1,5 +1,11 @@
 MailAppBundle\Entity\Subscriber:
   properties:
+      email:
+          - Email:
+              message: The email "{{ value }}" is not a valid email.
+              checkMX: false
+      user:
+          - NotBlank: ~
       atributes:
           - Valid: ~
           - All:

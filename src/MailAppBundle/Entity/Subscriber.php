@@ -10,7 +10,7 @@ class Subscriber
     private $id;
 
     /** @var string */
-    private $secret;
+    private $email;
 
     /** @var \DateTime */
     private $createdAt;
@@ -32,23 +32,23 @@ class Subscriber
     /**
      * @return string
      */
-    public function getSecret()
+    public function getEmail()
     {
-        return $this->secret;
+        return $this->email;
     }
 
     /**
-     * @param string $secret
+     * @param string $email
      */
-    public function setSecret($secret)
+    public function setEmail($email)
     {
-        $this->secret = $secret;
+        $this->email = $email;
     }
 
     /**
      * @return \DateTime
      */
-    public function getCreateAt()
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
@@ -56,7 +56,7 @@ class Subscriber
     /**
      * @param \DateTime $createdAt
      */
-    public function setCreateAt($createdAt)
+    public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
     }

@@ -7,11 +7,12 @@ MailAppBundle\Entity\Subscriber:
       generator:
         strategy: AUTO
   fields:
-      secret:
-         column: secret
-         type: string
-         nullable: false
-         length: 255
+      email:
+          column: email
+          type: string
+          unique: true
+          nullable: false
+          length: 255
       createdAt:
           column: created_at
           type: datetime

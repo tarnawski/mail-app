@@ -39,7 +39,8 @@
     "pdepend/pdepend" : "2.2.4",
     "sebastian/phpcpd": "^2.0",
     "codifico/parameter-bag-extension": "dev-master",
-    "codifico/web-api-extension": "1.0.x@dev"
+    "codifico/web-api-extension": "1.0.x@dev",
+    "phploc/phploc": "^3.0"
   },
   "scripts": {
     "post-install-cmd": [

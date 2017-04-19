@@ -4,12 +4,12 @@ MailAppBundle\Entity\Subscriber:
     id:
       expose: true
       groups: [SUBSCRIBER_DETAILS, SUBSCRIBER_BASIC]
-    secret:
-      expose: false
+    email:
+      expose: true
       groups: [SUBSCRIBER_DETAILS, SUBSCRIBER_BASIC]
     createdAt:
       expose: true
-      groups: [SUBSCRIBER_DETAILS, SUBSCRIBER_BASIC]
+      groups: [SUBSCRIBER_DETAILS]
     attributes:
       expose: true
       groups: [SUBSCRIBER_DETAILS]
