@@ -1,10 +1,24 @@
-########## USER ##########
+register:
+  path:     /register
+  defaults: { _controller: ApiBundle:User:register, _format: json }
+  methods: [POST]
+
 user_show:
   path:     /profile
   defaults: { _controller: ApiBundle:User:profile, _format: json }
   methods: [GET]
 
-register:
-  path:     /register
-  defaults: { _controller: ApiBundle:User:register, _format: json }
+subscriber_show:
+  path:     /subscribers
+  defaults: { _controller: ApiBundle:Subscriber:index, _format: json }
+  methods: [GET]
+
+subscriber_create:
+  path:     /subscribe
+  defaults: { _controller: ApiBundle:Subscriber:create, _format: json }
   methods: [POST]
+
+subscriber_delete:
+  path: /subscribers/{id}
+  defaults:  { _controller: ApiBundle:Subscriber:delete, _format: json }
+  methods:  [DELETE]

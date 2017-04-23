@@ -3,10 +3,7 @@
 namespace ApiBundle\Controller;
 
 use ApiBundle\Form\Type\RegisterType;
-use ApiBundle\Form\Type\UserType;
 use ApiBundle\Model\Register;
-use ApiBundle\Model\User as UserData;
-use MailAppBundle\Entity\User;
 use MailAppBundle\Model\UserFactory;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,7 +58,7 @@ class UserController extends BaseController
         $data = $form->getData();
 
         /** @var UserFactory $userFactory */
-        $userFactory = $this->get('oauth.user_factory');
+        $userFactory = $this->get('mail_app.user_factory');
         $user = $userFactory->buildAfterRegistration(
             $data->username,
             $data->email,
@@ -72,7 +69,7 @@ class UserController extends BaseController
         $em->persist($user);
         $em->flush();
 
-        $accessToken = $this->get('oauth.token_factory');
+        $accessToken = $this->get('mail_app.token_factory');
         $token = $accessToken->build($user, $data);
 
         return $token;

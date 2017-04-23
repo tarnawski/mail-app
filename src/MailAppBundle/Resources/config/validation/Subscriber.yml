@@ -4,9 +4,9 @@ MailAppBundle\Entity\Subscriber:
           - Email:
               message: The email "{{ value }}" is not a valid email.
               checkMX: false
-      user:
-          - NotBlank: ~
-      atributes:
+#      user:
+#          - NotBlank: ~
+      attributes:
           - Valid: ~
           - All:
               - NotNull: ~

@@ -21,6 +21,11 @@ class Subscriber
     /** @var ArrayCollection | Attribute[] */
     private $attributes;
 
+    public function __construct()
+    {
+        $this->attributes = new ArrayCollection();
+    }
+
     /**
      * @return int
      */

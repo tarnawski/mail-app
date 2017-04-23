@@ -3,13 +3,14 @@ MailAppBundle\Entity\Subscriber:
   properties:
     id:
       expose: true
-      groups: [SUBSCRIBER_DETAILS, SUBSCRIBER_BASIC]
+      groups: [SUBSCRIBER_DETAILS]
     email:
       expose: true
-      groups: [SUBSCRIBER_DETAILS, SUBSCRIBER_BASIC]
+      groups: [SUBSCRIBER_DETAILS]
     createdAt:
       expose: true
       groups: [SUBSCRIBER_DETAILS]
+      type: DateTime<'Y-m-d'>
     attributes:
       expose: true
       groups: [SUBSCRIBER_DETAILS]

@@ -2,11 +2,11 @@ MailAppBundle\Entity\Attribute:
   exclusion_policy: ALL
   properties:
     id:
-      expose: true
-      groups: [ATTRIBUTE_DETAILS, ATTRIBUTE_BASIC]
+      expose: false
+      groups: [ATTRIBUTE_DETAILS]
     name:
       expose: true
-      groups: [ATTRIBUTE_DETAILS, ATTRIBUTE_BASIC]
+      groups: [ATTRIBUTE_DETAILS]
     value:
       expose: true
-      groups: [ATTRIBUTE_DETAILS, ATTRIBUTE_BASIC]
+      groups: [ATTRIBUTE_DETAILS]

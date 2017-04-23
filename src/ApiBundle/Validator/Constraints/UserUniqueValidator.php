@@ -3,7 +3,7 @@
 namespace ApiBundle\Validator\Constraints;
 
 use Doctrine\ORM\EntityManager;
-use OAuthBundle\Entity\User;
+use MailAppBundle\Entity\User;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\PropertyAccess\PropertyAccess;

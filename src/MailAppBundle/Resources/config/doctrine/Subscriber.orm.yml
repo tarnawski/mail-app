@@ -10,7 +10,6 @@ MailAppBundle\Entity\Subscriber:
       email:
           column: email
           type: string
-          unique: true
           nullable: false
           length: 255
       createdAt:

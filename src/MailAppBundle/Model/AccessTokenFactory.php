@@ -3,6 +3,7 @@
 namespace MailAppBundle\Model;
 
 use Doctrine\ORM\EntityManager;
+use MailAppBundle\Entity\Client;
 use MailAppBundle\Entity\User;
 use OAuth2\OAuth2;
 
@@ -20,7 +21,7 @@ class AccessTokenFactory
 
     public function __construct(EntityManager $em, OAuth2 $auth2)
     {
-        $this->clientRepository = $em->getRepository('OAuthBundle:Client');
+        $this->clientRepository = $em->getRepository(Client::class);
         $this->auth2 = $auth2;
     }
 
