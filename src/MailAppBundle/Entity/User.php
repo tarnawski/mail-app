@@ -16,39 +16,39 @@ class User extends BaseUser
     /** @var integer */
     protected $id;
 
-    /** @var  ArrayCollection|Subscriber[] */
-    private $subscribers;
+    /** @var  ArrayCollection|SubscriberGroup[] */
+    private $subscriberGroups;
 
     public function __construct()
     {
         parent::__construct();
-        $this->subscribers = new ArrayCollection();
+        $this->groups = new ArrayCollection();
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getSubscribers()
+    public function getSubscriberGroups()
     {
-        return $this->subscribers;
+        return $this->subscriberGroups;
     }
 
     /**
-     * @param Subscriber $subscriber
+     * @param SubscriberGroup $subscriberGroup
      */
-    public function addSubscriber(Subscriber $subscriber)
+    public function addSubscriberGroup(SubscriberGroup $subscriberGroup)
     {
-        if (!$this->subscribers->contains($subscriber)) {
-            $subscriber->setUser($this);
-            $this->subscribers[] = $subscriber;
+        if (!$this->subscriberGroups->contains($subscriberGroup)) {
+            $subscriberGroup->setUser($this);
+            $this->subscriberGroups[] = $subscriberGroup;
         }
     }
 
     /**
-     * @param Subscriber $subscriber
+     * @param SubscriberGroup $subscriberGroup
      */
-    public function removeSubscriber(Subscriber $subscriber)
+    public function removeSubscriberGroup(SubscriberGroup $subscriberGroup)
     {
-        $this->subscribers->removeElement($subscriber);
+        $this->groups->removeElement($subscriberGroup);
     }
 }

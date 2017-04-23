@@ -1,0 +1,12 @@
+MailAppBundle\Entity\SubscriberGroup:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      groups: [SUBSCRIBER_GROUP_DETAILS]
+    name:
+      expose: true
+      groups: [SUBSCRIBER_GROUP_DETAILS, SUBSCRIBER_GROUP_BASIC]
+    groupKey:
+      expose: true
+      groups: [SUBSCRIBER_GROUP_DETAILS]

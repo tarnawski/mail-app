@@ -2,12 +2,12 @@
 
 namespace ApiBundle\Security\Authorization\Voter;
 
-use MailAppBundle\Entity\Subscriber;
+use MailAppBundle\Entity\SubscriberGroup;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use MailAppBundle\Entity\User;
 
-class SubscriberVoter extends Voter
+class SubscriberGroupVoter extends Voter
 {
     const ACCESS = 'access';
 
@@ -17,7 +17,7 @@ class SubscriberVoter extends Voter
             return false;
         }
 
-        if (!$subject instanceof Subscriber) {
+        if (!$subject instanceof SubscriberGroup) {
             return false;
         }
 
@@ -31,23 +31,23 @@ class SubscriberVoter extends Voter
             return false;
         }
 
-        /** @var Subscriber $subscriber */
-        $subscriber = $subject;
+        /** @var SubscriberGroup $subscriberGroup */
+        $subscriberGroup = $subject;
 
         switch ($attribute) {
             case self::ACCESS:
-                return $this->canAccess($subscriber, $user);
+                return $this->canAccess($subscriberGroup, $user);
         }
 
         throw new \LogicException('This code should not be reached!');
     }
 
-    private function canAccess(Subscriber $subscriber, User $user)
+    private function canAccess(SubscriberGroup $subscriberGroup, User $user)
     {
         if ($user->hasRole('ROLE_ADMIN')) {
             return true;
         }
-        if ($subscriber->getSubscriberGroup()->getUser() == $user) {
+        if ($subscriberGroup->getUser() == $user) {
             return true;
         }
 

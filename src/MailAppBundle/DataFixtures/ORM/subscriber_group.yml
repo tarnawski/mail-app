@@ -1,0 +1,13 @@
+MailAppBundle\Entity\SubscriberGroup:
+  subscriberGroup1:
+    name: <word()>
+    groupKey: 436c2444-9a0e-45cc-8808-1f6660345287
+    user: '@user1'
+  subscriberGroup2:
+    name: <word()>
+    groupKey: 4d1d6ff1-bda0-4b1a-b5fc-96885daec05d
+    user: '@user1'
+  subscriberGroup3:
+    name: <word()>
+    groupKey: d39ad5f1-bbd6-48d4-a12e-164d027af865
+    user: '@user2'

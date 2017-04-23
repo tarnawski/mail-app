@@ -7,8 +7,8 @@ MailAppBundle\Entity\User:
       generator:
         strategy: AUTO
   oneToMany:
-       subscribers:
-           targetEntity: Subscriber
+       subscriberGroups:
+           targetEntity: SubscriberGroup
            mappedBy: user
            cascade: ["all"]
 

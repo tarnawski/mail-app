@@ -1,0 +1,35 @@
+MailAppBundle\Entity\SubscriberGroup:
+  type: entity
+  table: subscriber_group
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+      name:
+          column: name
+          type: string
+          nullable: false
+          length: 64
+      groupKey:
+          column: group_key
+          unique: true
+          type: string
+          nullable: false
+          length: 64
+  manyToOne:
+      user:
+           targetEntity: User
+           inversedBy: subscriber_group
+           joinColumn:
+              name: user_id
+              referencedColumnName: id
+              nullable: true
+  oneToMany:
+      subscribers:
+           targetEntity: Subscriber
+           mappedBy: subscriberGroup
+           cascade: ["all"]
+
+  lifecycleCallbacks: {  }

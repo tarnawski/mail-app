@@ -3,7 +3,7 @@
 namespace ApiBundle\Form\Type;
 
 use MailAppBundle\Entity\Subscriber;
-use MailAppBundle\Entity\User;
+use MailAppBundle\Entity\SubscriberGroup;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,10 +16,10 @@ class SubscriberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('email', EmailType::class);
-        $builder->add('username', EntityType::class, [
-            'property_path' => 'user',
-            'class' => User::class,
-            'choice_value' => 'username'
+        $builder->add('group', EntityType::class, [
+            'property_path' => 'subscriberGroup',
+            'class' => SubscriberGroup::class,
+            'choice_value' => 'groupKey'
         ]);
         $builder->add('attributes', CollectionType::class, array(
             'entry_type' => AttributeType::class,

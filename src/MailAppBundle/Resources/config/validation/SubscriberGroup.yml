@@ -1,0 +1,10 @@
+MailAppBundle\Entity\SubscriberGroup:
+  properties:
+      name:
+          - NotBlank: ~
+          - Length:
+              max:   64
+      groupKey:
+          - NotBlank: ~
+          - Length:
+              max:   64

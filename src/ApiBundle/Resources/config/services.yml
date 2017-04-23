@@ -16,3 +16,9 @@ services:
     tags:
       - { name: security.voter }
     public: false
+
+  subscriber_group_voter:
+    class: ApiBundle\Security\Authorization\Voter\SubscriberGroupVoter
+    tags:
+      - { name: security.voter }
+    public: false

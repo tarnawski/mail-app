@@ -2,13 +2,10 @@
 
 namespace ApiBundle\Controller;
 
-use ApiBundle\Form\Type\RegisterType;
 use ApiBundle\Form\Type\SubscriberType;
-use ApiBundle\Model\Register;
 use MailAppBundle\Entity\Subscriber;
 use MailAppBundle\Entity\User;
-use MailAppBundle\Model\UserFactory;
-use Symfony\Component\Form\Form;
+use MailAppBundle\Repository\SubscriberRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -29,23 +26,24 @@ class SubscriberController extends BaseController
     {
         /** @var User $user */
         $user = $this->getUser();
-        $subscribers = $user->getSubscribers();
+        /** @var SubscriberRepository $subscribeRepository */
+        $subscribeRepository = $this->getRepository(Subscriber::class);
+        $subscribers = $subscribeRepository->getSubscriberByUser($user);
 
         return $this->success($subscribers, 'subscriber', Response::HTTP_OK, [
             'SUBSCRIBER_DETAILS',
+            'SUBSCRIBER_GROUP_BASIC',
             'ATTRIBUTE_DETAILS'
         ]);
     }
 
     /**
      * @ApiDoc(
-     *  description="Create new subscribers",
+     *  description="Create new subscriber",
      *  parameters={
-     *      {"name"="name", "dataType"="string", "required"=true, "description"="Name of notification"},
-     *      {"name"="description", "dataType"="string", "required"=true, "description"="Short description of notification"},
-     *      {"name"="latitude", "dataType"="string", "required"=true, "description"="Position od notify issue"},
-     *      {"name"="longitude", "dataType"="string", "required"=true, "description"="Position od notify issue"},
-     *      {"name"="category", "dataType"="integer", "required"=true, "description"="Category ID"}
+     *      {"name"="email", "dataType"="string", "required"=true, "description"="Subscriber email address"},
+     *      {"name"="group", "dataType"="string", "required"=true, "description"="Group key"},
+     *      {"name"="attributes", "dataType"="string", "required"=false, "description"="Unlimited additional attributes consisting of name and value pairs."}
      *  })
      * )
      * @param Request $request
@@ -62,6 +60,7 @@ class SubscriberController extends BaseController
         }
         /** @var Subscriber $subscriber */
         $subscriber = $form->getData();
+        $subscriber->setActive(true);
         $subscriber->setCreatedAt(new \DateTime());
 
         $em = $this->getDoctrine()->getManager();

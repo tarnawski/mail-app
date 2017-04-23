@@ -1,6 +1,7 @@
 MailAppBundle\Entity\Subscriber:
   type: entity
   table: subscriber
+  repositoryClass: MailAppBundle\Repository\SubscriberRepository
   id:
     id:
       type: integer
@@ -12,16 +13,21 @@ MailAppBundle\Entity\Subscriber:
           type: string
           nullable: false
           length: 255
+      active:
+          column: active
+          type: boolean
+          options:
+              default: 1
       createdAt:
           column: created_at
           type: datetime
           nullable: false
   manyToOne:
-      user:
-           targetEntity: User
+      subscriberGroup:
+           targetEntity: SubscriberGroup
            inversedBy: subscriber
            joinColumn:
-              name: user_id
+              name: subscriber_group_id
               referencedColumnName: id
               nullable: true
   oneToMany:

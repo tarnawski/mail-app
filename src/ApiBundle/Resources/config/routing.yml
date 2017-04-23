@@ -8,13 +8,28 @@ user_show:
   defaults: { _controller: ApiBundle:User:profile, _format: json }
   methods: [GET]
 
+subscriber_group_show:
+  path:     /groups
+  defaults: { _controller: ApiBundle:SubscriberGroup:index, _format: json }
+  methods: [GET]
+
+subscriber_group_create:
+  path:     /groups
+  defaults: { _controller: ApiBundle:SubscriberGroup:create, _format: json }
+  methods: [POST]
+
+subscriber_group_delete:
+  path: /groups/{id}
+  defaults:  { _controller: ApiBundle:SubscriberGroup:delete, _format: json }
+  methods:  [DELETE]
+
 subscriber_show:
   path:     /subscribers
   defaults: { _controller: ApiBundle:Subscriber:index, _format: json }
   methods: [GET]
 
 subscriber_create:
-  path:     /subscribe
+  path:     /subscribers
   defaults: { _controller: ApiBundle:Subscriber:create, _format: json }
   methods: [POST]
 

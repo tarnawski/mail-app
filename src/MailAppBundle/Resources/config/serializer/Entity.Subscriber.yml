@@ -11,6 +11,10 @@ MailAppBundle\Entity\Subscriber:
       expose: true
       groups: [SUBSCRIBER_DETAILS]
       type: DateTime<'Y-m-d'>
+    subscriberGroup:
+      expose: true
+      groups: [SUBSCRIBER_DETAILS]
+      type: MailAppBundle\Entity\SubscriberGroup
     attributes:
       expose: true
       groups: [SUBSCRIBER_DETAILS]

@@ -1,21 +1,26 @@
 MailAppBundle\Entity\Subscriber:
   subscriber1:
     email: <email()>
+    active: true
     createdAt: <dateTimeBetween('-30 days', 'now')>
-    user: '@user1'
+    subscriberGroup: '@subscriberGroup1'
   subscriber2:
     email: <email()>
+    active: true
     createdAt: <dateTimeBetween('-30 days', 'now')>
-    user: '@user1'
+    subscriberGroup: '@subscriberGroup1'
   subscriber3:
     email: <email()>
+    active: true
     createdAt: <dateTimeBetween('-30 days', 'now')>
-    user: '@user1'
+    subscriberGroup: '@subscriberGroup2'
   subscriber4:
     email: <email()>
+    active: true
     createdAt: <dateTimeBetween('-30 days', 'now')>
-    user: '@user2'
+    subscriberGroup: '@subscriberGroup3'
   subscriber5:
     email: <email()>
+    active: true
     createdAt: <dateTimeBetween('-30 days', 'now')>
-    user: '@user2'
+    subscriberGroup: '@subscriberGroup3'

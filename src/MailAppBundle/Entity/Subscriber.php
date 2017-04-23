@@ -12,11 +12,14 @@ class Subscriber
     /** @var string */
     private $email;
 
+    /** @var boolean */
+    private $active;
+
     /** @var \DateTime */
     private $createdAt;
 
-    /** @var User */
-    private $user;
+    /** @var SubscriberGroup */
+    private $subscriberGroup;
 
     /** @var ArrayCollection | Attribute[] */
     private $attributes;
@@ -51,6 +54,22 @@ class Subscriber
     }
 
     /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getCreatedAt()
@@ -67,19 +86,19 @@ class Subscriber
     }
 
     /**
-     * @return User
+     * @return SubscriberGroup
      */
-    public function getUser()
+    public function getSubscriberGroup()
     {
-        return $this->user;
+        return $this->subscriberGroup;
     }
 
     /**
-     * @param User $user
+     * @param SubscriberGroup $subscriberGroup
      */
-    public function setUser($user)
+    public function setSubscriberGroup(SubscriberGroup $subscriberGroup)
     {
-        $this->user = $user;
+        $this->subscriberGroup = $subscriberGroup;
     }
 
     /**
