@@ -24,6 +24,7 @@ class UserFactory
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
+        $user->setEnabled(true);
         $user->setRoles(['ROLE_API']);
 
         return $user;

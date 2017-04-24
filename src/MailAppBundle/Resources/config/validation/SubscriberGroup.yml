@@ -4,7 +4,3 @@ MailAppBundle\Entity\SubscriberGroup:
           - NotBlank: ~
           - Length:
               max:   64
-      groupKey:
-          - NotBlank: ~
-          - Length:
-              max:   64

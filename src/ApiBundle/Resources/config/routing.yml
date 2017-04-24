@@ -3,6 +3,11 @@ register:
   defaults: { _controller: ApiBundle:User:register, _format: json }
   methods: [POST]
 
+status:
+  path:     /status
+  defaults: { _controller: ApiBundle:Status:index, _format: json }
+  methods: [GET]
+
 user_show:
   path:     /profile
   defaults: { _controller: ApiBundle:User:profile, _format: json }

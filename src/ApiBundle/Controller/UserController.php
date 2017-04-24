@@ -15,7 +15,6 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  */
 class UserController extends BaseController
 {
-
     /**
      * @ApiDoc(
      *  description="Return information about current user",

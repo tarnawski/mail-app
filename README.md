@@ -1,14 +1,7 @@
-Symfony Microkernel Skeleton
-============================
-Symfony Microkernel Skeleton with tools that can be useful when developing microservices.
-Provisioning include:
-- apache2
-- php7
-- MySQL 5.7
-- composer
+MailApp
+=======
 
 ###Getting started
-
 
 In order to set application up you must follow by steps:
 
@@ -21,14 +14,4 @@ In order to set application up you must follow by steps:
 ### How to provision new server
 ```bash
 ansible-playbook -i hosts provision.yml -u {USERNAME} -k -K
-```
-
-### Create archive with project 
-```
-composer archive --format=tar --file=skeleton --dir=vagrant/provisioning/
-```
-### Deploy App
-```
-sudo ansible-galaxy install --force carlosbuenosvinos.ansistrano-deploy
-ansible-playbook -i hosts deploy.yml -u {USERNAME} -k -K
 ```
