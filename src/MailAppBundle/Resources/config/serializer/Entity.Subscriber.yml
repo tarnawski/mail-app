@@ -10,7 +10,7 @@ MailAppBundle\Entity\Subscriber:
     createdAt:
       expose: true
       groups: [SUBSCRIBER_DETAILS]
-      type: DateTime<'Y-m-d'>
+      type: DateTime<'d-m-Y'>
     subscriberGroup:
       expose: true
       groups: [SUBSCRIBER_DETAILS]

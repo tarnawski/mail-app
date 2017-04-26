@@ -1,4 +1,16 @@
 services:
+  mail_app.repository.subscriber:
+    class: Doctrine\ORM\EntityRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - MailAppBundle\Entity\Subscriber
+
+  mail_app.repository.subscriber_group:
+    class: Doctrine\ORM\EntityRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - MailAppBundle\Entity\SubscriberGroup
+
   mail_app.user_factory:
     class: MailAppBundle\Model\UserFactory
 
@@ -6,3 +18,8 @@ services:
     class: MailAppBundle\Model\AccessTokenFactory
     arguments: ["@doctrine.orm.entity_manager", "@fos_oauth_server.server"]
 
+  mail_app.subscriber_group_serializer:
+    class: MailAppBundle\Serializer\SubscriberGroupHandler
+    arguments: ["@mail_app.repository.subscriber"]
+    tags:
+      - { name: jms_serializer.event_subscriber }

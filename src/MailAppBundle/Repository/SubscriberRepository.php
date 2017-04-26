@@ -3,6 +3,7 @@
 namespace MailAppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use MailAppBundle\Entity\SubscriberGroup;
 use MailAppBundle\Entity\User;
 
 class SubscriberRepository extends EntityRepository
@@ -44,6 +45,32 @@ class SubscriberRepository extends EntityRepository
             ->andWhere('user = :user')
             ->andWhere('subscriber.active = false')
             ->setParameter('user', $user)
+            ->getQuery()->getSingleScalarResult();
+
+        return $result;
+    }
+
+    public function getActiveSubscriberCountByGroup(SubscriberGroup $group)
+    {
+        $result = $this->createQueryBuilder('subscriber')
+            ->select('count(subscriber)')
+            ->join('subscriber.subscriberGroup', 'subscriber_group')
+            ->andWhere('subscriber_group = :subscriber_group')
+            ->andWhere('subscriber.active = true')
+            ->setParameter('subscriber_group', $group)
+            ->getQuery()->getSingleScalarResult();
+
+        return $result;
+    }
+
+    public function getUnActiveSubscriberCountByGroup(SubscriberGroup $group)
+    {
+        $result = $this->createQueryBuilder('subscriber')
+            ->select('count(subscriber)')
+            ->join('subscriber.subscriberGroup', 'subscriber_group')
+            ->andWhere('subscriber_group = :subscriber_group')
+            ->andWhere('subscriber.active = false')
+            ->setParameter('subscriber_group', $group)
             ->getQuery()->getSingleScalarResult();
 
         return $result;

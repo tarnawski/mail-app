@@ -3,7 +3,9 @@
 namespace ApiBundle\Controller;
 
 use MailAppBundle\Entity\Subscriber;
+use MailAppBundle\Entity\SubscriberGroup;
 use MailAppBundle\Entity\User;
+use MailAppBundle\Repository\SubscriberGroupRepository;
 use MailAppBundle\Repository\SubscriberRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,12 +26,14 @@ class StatusController extends BaseController
     {
         /** @var User $user */
         $user = $this->getUser();
-        /** @var SubscriberRepository $subscribeRepository */
-        $subscribeRepository = $this->getRepository(Subscriber::class);
-
+        /** @var SubscriberRepository $subscriberRepository */
+        $subscriberRepository = $this->getRepository(Subscriber::class);
+        /** @var SubscriberGroupRepository $subscribeGroupRepository */
+        $subscribeGroupRepository = $this->getRepository(SubscriberGroup::class);
         return JsonResponse::create([
-           'subscribe' => $subscribeRepository->getActiveSubscriberCountByUser($user),
-           'unsubscribe' => $subscribeRepository->getUnActiveSubscriberCountByUser($user)
+           'group' => $subscribeGroupRepository->getGroupCountByUser($user),
+           'subscribe' => $subscriberRepository->getActiveSubscriberCountByUser($user),
+           'unsubscribe' => $subscriberRepository->getUnActiveSubscriberCountByUser($user)
         ]);
     }
 }

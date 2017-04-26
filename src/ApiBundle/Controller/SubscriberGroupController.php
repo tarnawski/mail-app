@@ -54,6 +54,7 @@ class SubscriberGroupController extends BaseController
         }
         /** @var SubscriberGroup $group */
         $group = $form->getData();
+        $group->setCreatedAt(new \DateTime());
         $group->setUser($this->getUser());
         $group->setGroupKey(Uuid::uuid4()->toString());
         $em = $this->getDoctrine()->getManager();

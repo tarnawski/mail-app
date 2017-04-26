@@ -10,3 +10,7 @@ MailAppBundle\Entity\SubscriberGroup:
     groupKey:
       expose: true
       groups: [SUBSCRIBER_GROUP_DETAILS]
+    createdAt:
+      expose: true
+      groups: [SUBSCRIBER_GROUP_DETAILS]
+      type: DateTime<'d-m-Y'>

@@ -15,6 +15,9 @@ class SubscriberGroup
     /** @var string */
     private $groupKey;
 
+    /** @var \DateTime */
+    private $createdAt;
+
     /** @var User */
     private $user;
 
@@ -67,6 +70,22 @@ class SubscriberGroup
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
      * @return User
      */
     public function getUser()
@@ -93,10 +112,10 @@ class SubscriberGroup
     /**
      * @param Subscriber $subscriber
      */
-    public function addAttribute(Subscriber $subscriber)
+    public function addSubscriber(Subscriber $subscriber)
     {
         if (!$this->subscribers->contains($subscriber)) {
-            $subscriber->setGroup($this);
+            $subscriber->setSubscriberGroup($this);
             $this->subscribers[] = $subscriber;
         }
     }
@@ -104,7 +123,7 @@ class SubscriberGroup
     /**
      * @param Subscriber $subscriber
      */
-    public function removeAttribute(Subscriber $subscriber)
+    public function removeSubscriber(Subscriber $subscriber)
     {
         $this->subscribers->removeElement($subscriber);
     }
