@@ -23,3 +23,9 @@ services:
     arguments: ["@mail_app.repository.subscriber"]
     tags:
       - { name: jms_serializer.event_subscriber }
+
+  mail_app.subscribrt_csv_generator:
+    class: MailAppBundle\Service\csv\SubscriberCsvGenerator
+
+  mail_app.subscribrt_eml_generator:
+    class: MailAppBundle\Service\eml\SubscriberEmlGenerator
