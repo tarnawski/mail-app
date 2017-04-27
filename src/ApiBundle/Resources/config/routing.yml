@@ -28,6 +28,16 @@ subscriber_group_delete:
   defaults:  { _controller: ApiBundle:SubscriberGroup:delete, _format: json }
   methods:  [DELETE]
 
+subscriber_group_export_csv:
+  path:     /export-csv/groups/{id}
+  defaults: { _controller: ApiBundle:SubscriberGroup:exportCsv, _format: json }
+  methods: [GET]
+
+subscriber_group_export_eml:
+  path:     /export-eml/groups/{id}
+  defaults: { _controller: ApiBundle:SubscriberGroup:exportEml, _format: json }
+  methods: [GET]
+
 subscriber_show:
   path:     /subscribers
   defaults: { _controller: ApiBundle:Subscriber:index, _format: json }

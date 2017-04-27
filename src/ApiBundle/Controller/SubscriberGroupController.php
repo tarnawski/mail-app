@@ -5,6 +5,8 @@ namespace ApiBundle\Controller;
 use ApiBundle\Form\Type\SubscriberGroupType;
 use MailAppBundle\Entity\SubscriberGroup;
 use MailAppBundle\Entity\User;
+use MailAppBundle\Service\csv\SubscriberCsvGenerator;
+use MailAppBundle\Service\eml\SubscriberEmlGenerator;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,6 +34,37 @@ class SubscriberGroupController extends BaseController
             'SUBSCRIBER_GROUP_DETAILS'
         ]);
     }
+
+    /**
+     * @param SubscriberGroup $subscriberGroup
+     * @return \ApiBundle\HttpFoundation\CsvResponse
+     */
+    public function exportCsvAction(SubscriberGroup $subscriberGroup)
+    {
+        $this->denyAccessUnlessGranted('access', $subscriberGroup);
+
+        /** @var SubscriberCsvGenerator $subscriberCsvGenerator */
+        $subscriberCsvGenerator = $this->get('mail_app.subscribrt_csv_generator');
+        $subscriberCsv = $subscriberCsvGenerator->generateCsv($subscriberGroup->getSubscribers(), true);
+
+        return $this->csv($subscriberCsv);
+    }
+
+    /**
+     * @param SubscriberGroup $subscriberGroup
+     * @return \ApiBundle\HttpFoundation\EmlResponse
+     */
+    public function exportEmlAction(SubscriberGroup $subscriberGroup)
+    {
+        $this->denyAccessUnlessGranted('access', $subscriberGroup);
+
+        /** @var SubscriberEmlGenerator $subscriberEmlGenerator */
+        $subscriberEmlGenerator = $this->get('mail_app.subscribrt_eml_generator');
+        $subscriberEml = $subscriberEmlGenerator->generateEml($subscriberGroup->getSubscribers());
+
+        return $this->eml($subscriberEml);
+    }
+
 
     /**
      * @ApiDoc(
