@@ -6,8 +6,3 @@ parameters:
     database_name:     mail-app
     database_user:     root
     database_password: rootpassword
-    mailer_transport:  smtp
-    mailer_host:       poczta.o2.pl
-    mailer_port:       465
-    mailer_user:       ~
-    mailer_password:   ~
