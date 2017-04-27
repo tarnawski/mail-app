@@ -2,6 +2,8 @@
 
 namespace ApiBundle\Controller;
 
+use ApiBundle\HttpFoundation\CsvResponse;
+use ApiBundle\HttpFoundation\EmlResponse;
 use FOS\RestBundle\Controller\FOSRestController;
 use JMS\Serializer\SerializationContext;
 use Symfony\Component\Form\Form;
@@ -28,6 +30,29 @@ abstract class BaseController extends FOSRestController
         }
 
         return $errors;
+    }
+
+    /**
+     * @param array $data The response data
+     * @param int $status The status code to use for the Response
+     * @param array $headers Array of extra headers to add
+     * @param array $options Options to pass to CSV file
+     *
+     * @return CsvResponse
+     */
+    public function csv(array $data = [], $status = 200, $headers = [], array $options = [])
+    {
+        return new CsvResponse($data, $status, $headers, $options);
+    }
+
+    /**
+     * @param $email
+     *
+     * @return EmlResponse
+     */
+    public function eml($email)
+    {
+        return new EmlResponse($email);
     }
 
     /**
