@@ -32,10 +32,6 @@ class AppKernel extends Kernel
             new MailAppBundle\MailAppBundle(),
         ];
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
-            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-        }
-
         return $bundles;
     }
 
@@ -64,8 +60,6 @@ class AppKernel extends Kernel
 
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
-        $routes->mount('/_wdt', $routes->import('@WebProfilerBundle/Resources/config/routing/wdt.xml'));
-        $routes->mount('/_profiler', $routes->import('@WebProfilerBundle/Resources/config/routing/profiler.xml'));
         $routes->import(__DIR__.'/config/routing.yml');
     }
 
