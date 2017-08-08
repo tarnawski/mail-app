@@ -29,3 +29,19 @@ services:
 
   mail_app.subscribrt_eml_generator:
     class: MailAppBundle\Service\eml\SubscriberEmlGenerator
+
+  mail_app.email_sender:
+    class: MailAppBundle\Service\EmailSender
+    arguments:
+      - '%mailer_user%'
+      - "@mailer"
+
+  notification.command.via_email:
+    class: NotificationDomain\Command\NotifyViaEmailCommandHandler
+    arguments:
+      - "@mail_app.email_sender"
+
+  notification.command_bus:
+    class: NotificationDomain\ServiceBus\CommandBus
+    calls:
+       - [register, ['@notification.command.via_email']]

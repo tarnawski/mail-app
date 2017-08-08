@@ -6,3 +6,8 @@ parameters:
     database_name:     mail-app
     database_user:     root
     database_password: rootpassword
+    mailer_transport:  smtp
+    mailer_port: 465
+    mailer_host: ~
+    mailer_user: ~
+    mailer_password: ~
