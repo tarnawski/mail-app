@@ -6,6 +6,8 @@ use ApiBundle\Form\Type\SubscriberType;
 use MailAppBundle\Entity\Subscriber;
 use MailAppBundle\Entity\User;
 use MailAppBundle\Repository\SubscriberRepository;
+use NotificationDomain\Command\NotifyViaEmailCommand;
+use NotificationDomain\ServiceBus\CommandBus;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -66,6 +68,16 @@ class SubscriberController extends BaseController
         $em = $this->getDoctrine()->getManager();
         $em->persist($subscriber);
         $em->flush();
+
+        $notificationViaEmailCommand = new NotifyViaEmailCommand(
+       'Good news',
+    'New subscriber in Your group',
+            $subscriber->getSubscriberGroup()->getUser()->getEmail()
+        );
+
+        /** @var CommandBus $commandBus */
+        $commandBus = $this->get('notification.command_bus');
+        $commandBus->handle($notificationViaEmailCommand);
 
         return $this->success($subscriber, 'subscriber', Response::HTTP_CREATED, [
             'SUBSCRIBER_DETAILS',
